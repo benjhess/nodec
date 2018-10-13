@@ -1,0 +1,20 @@
+{
+  "name": "nodec",
+  "version": "1.0.0",
+  "description": "node compiler env with precompiled node sources for node version 8.11.4",
+  "scripts": {
+    "build": "npm run docker:build; npm run docker:cleanup",
+    "delete": "npm run docker:delete",
+    "container": "docker run -it --rm $npm_package_user/nodec:8.11.4",
+    "push": "npm run docker:login && npm run docker:tag && npm run docker:push",
+    "docker:login": "docker login -u $npm_package_user",
+    "docker:tag": "docker tag $npm_package_user/nodec:8.11.4 $npm_package_user/nodec:latest",
+    "docker:push": "docker push $npm_package_user/nodec:8.11.4 && docker push $npm_package_user/nodec:latest",
+    "docker:build": "docker build --no-cache --compress --squash -t $npm_package_user/nodec:8.11.4 -f Dockerfile build/",
+    "docker:delete": "docker rmi $npm_package_user/nodec:8.11.4",
+    "docker:cleanup": "docker image prune -f"
+  },
+  "author": "benjhess@stdin.coffee",
+  "license": "ISC",
+  "user": "benjhess"
+}
