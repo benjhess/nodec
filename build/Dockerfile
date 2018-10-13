@@ -5,7 +5,8 @@ SHELL ["/bin/bash", "-c"]
 WORKDIR /home/nodec/
 
 # installs dependencies required for provisioning and node packer
-RUN apt-get update && apt-get install -y --no-install-recommends curl git squashfs-tools python gcc g++ make xz-utils
+RUN apt-get update && apt-get install -y --no-install-recommends curl git squashfs-tools python gcc g++ make xz-utils \
+ && rm -rf /var/lib/apt/lists/*
 
 # installs upx
 RUN curl -sSLko- https://github.com/upx/upx/releases/download/v3.95/upx-3.95-amd64_linux.tar.xz | tar xJf - \
