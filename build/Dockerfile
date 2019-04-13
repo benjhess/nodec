@@ -2,8 +2,8 @@ FROM debian:sid-slim
 
 SHELL ["/bin/bash", "-c"]
 
-ENV NODE_VERSION=8.12.0
-ENV NPM_VERSION=6.4.1
+ENV NODE_VERSION=10.15.3
+ENV NPM_VERSION=6.9.0
 ENV UPX_VERSION=3.95
 
 WORKDIR /home/nodec/
